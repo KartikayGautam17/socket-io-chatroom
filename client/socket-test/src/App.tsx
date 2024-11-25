@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { io } from "socket.io-client";
-
+import axios from "axios";
 function App() {
   const url: string | undefined = import.meta.env.VITE_SERVER_URL;
   const [message, setMessage] = useState("");
@@ -15,6 +15,10 @@ function App() {
   };
 
   useEffect(() => {
+    axios.get("http://localhost:3000/get", {}).then((val) => {
+      console.log(val.data);
+    });
+
     socket?.on("welcome", (data) => {
       console.log(data);
     });

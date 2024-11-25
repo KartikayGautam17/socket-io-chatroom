@@ -31,11 +31,15 @@ io.on("connection", (Socket) => {
 });
 
 app.use(cors(corsOptions));
-app.get("/", (req, res) => {
+app.get("/get", (req, res) => {
   res.json({ abcd: "4" });
 });
 
 const port = 3000;
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
+});
+
+app.listen(2500, () => {
+  console.log("express server is running on port 2500");
 });
